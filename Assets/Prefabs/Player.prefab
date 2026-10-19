@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3333626355376112944}
   - component: {fileID: 1466705339170916913}
   - component: {fileID: 2223066989523535368}
+  - component: {fileID: 6262508632002160903}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -138,6 +139,7 @@ MonoBehaviour:
   NestedObjects: []
   NetworkedBehaviours:
   - {fileID: 2223066989523535368}
+  - {fileID: 6262508632002160903}
   ForceRemoteRenderTimeframe: 0
 --- !u!114 &2223066989523535368
 MonoBehaviour:
@@ -180,6 +182,24 @@ MonoBehaviour:
     MinImpactfulCollisionAlignment: 0.3
     ImpactStartCorrectionTime: 0.1
     ImpactCorrectionTimeComplete: 0.3
+--- !u!114 &6262508632002160903
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2418170867079231937}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e38262f46d8dcf4aab8673a4c355644, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ShootPlayer
+  speed: 5
+  characterController: {fileID: 0}
+  bodyRender: {fileID: 0}
+  bulletPrefab: {fileID: 2293559253307691582, guid: 071b48e2ea85a3849b84eed99bbce78b, type: 3}
+  muzzle: {fileID: 0}
+  _TeamColor: 0
 --- !u!1 &5489800341245041124
 GameObject:
   m_ObjectHideFlags: 0
