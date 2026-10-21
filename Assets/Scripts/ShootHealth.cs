@@ -1,16 +1,38 @@
 using UnityEngine;
+using Fusion;
 
-public class ShootHealth : MonoBehaviour
+public class ShootHealth : NetworkBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [Networked]
+    public int health {  get; set; }
+
+    public override void Spawned()
     {
-        
+        if (HasStateAuthority)
+        {
+            health = 100;
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
+
+    public void RPC_ReceiveDamage(RpcInfo info = default)
     {
-        
+        if (HasStateAuthority) return;
+
+        ShootMatch match = ShootMatch.Instance;
+
+        if (match == null || !match.CanPlay) return;
+
+        if (health <= 0) return;
+
+        if (info.Source == Object.StateAuthority) return;
+
+        Debug.Log("Jogador recebeu dano. Vida: " +  health);
+
+        if(health == 0)
+        {
+            match.RPC_ReportDefeat(Object.StateAuthority);
+        }
     }
 }

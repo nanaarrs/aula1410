@@ -21,7 +21,7 @@ public class ShootPlayer : NetworkBehaviour
     bool firePending;
     public override void Spawned()
     {
-        if (!HasStateAuthority)
+        if (HasStateAuthority)
         {
             TeamColor = (byte)(Runner.IsSharedModeMasterClient ? 0 : 1);
         }
